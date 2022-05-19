@@ -2,8 +2,7 @@
 <div class= "contanier my-3">
   <p id="notice"><%= notice %></p>
   <h1 style="color:black;">Client</h1>
-  <%= link_to "Profile",clients_path, class:"btn btn-primary"%> 
- <!--  <a href='javascript:void(0)' class='property_filter', search_path>Filter</a> -->
+  <%= link_to "Profile",new_client_path, class:"btn btn-primary"%> 
   <div class="row mx-0">
       <% if @properties.present? %>
       <% @properties.each do |p|%>
@@ -15,7 +14,6 @@
           <%= p.property_size %><br>
           <%= p.price %><br>
           <%= p.is_deposit_required %>
-          <%#= p. %>
         </p>
         <p> Created by: <%= p.user.name.capitalize %> </p>
         <%= link_to "View", property_path(p), class:"btn btn-primary"%>
@@ -31,4 +29,4 @@
   <h1 style="color: black;"> you are at wrong section </h1>
   <% end %>
 
-  <%#= render partial: 'clients/filter' %>
+
