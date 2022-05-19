@@ -1,0 +1,34 @@
+
+<% if current_user.role == 'Broker' %>
+<h1 style= "color: black;"> Broker </h1>
+<%= link_to "Profile",new_broker_path, class:"btn btn-primary"%> | 
+<%= link_to "Create New Property", new_property_path, class: "btn btn-primary" %> |
+<%= link_to "My Property", properties_path(my_property: true), class: "btn btn-primary" %>
+<div class="row"> 
+    <% if @properties.present? %>
+    <% @properties.each do |p|%>
+    <div class="col-md-3 my-2">
+    <div class="card">
+        <div class="card-body">
+            <h5 style="color :black;" class="card-title"><%= p.title%></h5>
+            <h6 style="color :black;"> <p class="card-text">
+             <%= p.property_size %> <br>
+             <%= p.price %><br>
+             <%= p.is_deposit_required %>
+         </p>
+     </h6>
+    </div>
+     <div class="card">
+        <%= link_to "View", property_path(p), class:"btn btn-primary"%>
+    </div>
+</div>
+</div>
+<% end %>
+<% end %>
+<% else %>
+  <center>
+    You are at wrong section
+<% end %>
+
+
+

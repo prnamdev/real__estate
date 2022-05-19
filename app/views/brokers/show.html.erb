@@ -1,0 +1,9 @@
+<% if current_user.role == 'Broker' %>
+<h1 style= "color: black;"> Broker </h1>
+<%= link_to "Profile",new_broker_path, class:"btn btn-primary"%> | 
+<%= link_to "Create New Property", new_property_path, class: "btn btn-primary" %> |
+<%= link_to "My Property", properties_path(my_property: true), class: "btn btn-primary" %>
+<% else %>
+<center>
+<h1 style="color: black;"> you are at wrong section </h1>
+<% end %>
