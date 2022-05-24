@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -24,6 +25,19 @@
   <strong>Is deposit required:</strong>
   <%= @property.is_deposit_required %>
 </p>
+<% if current_user.Client? %>
+  <%= link_to 'Back' , clients_path %><br>
+  <% interest = Interest.find_by(property: @property, user: current_user) %>
+  <% if interest.present? %>
+      <%= button_to 'Cancel', property_interest_path(property_id: @property.id,id: interest.id), :method => :delete %>
+  <% else %>
+    <%= button_to 'Interest', property_interests_path(@property), method: :property %>
+  <% end %>
+<% else %>
+  <%= link_to "Show Interested User", interests_interest_path(@property), class: "btn btn-primary" %>
+  <%= link_to 'Back' , brokers_path %>
+  <%= link_to 'Edit' , edit_property_path(@property) %>
+<% end %>
 
-<%= link_to 'Edit', edit_property_path(@property) %> |
-<%= link_to 'Back', properties_path %>
+</div>
+

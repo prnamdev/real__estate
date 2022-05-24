@@ -11,6 +11,7 @@ class PropertiesController < ApplicationController
   end
   # GET /properties/1 or /properties/1.json
   def show
+    @interests = @property.interests
   end
 
   # GET /properties/new

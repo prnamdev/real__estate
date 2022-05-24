@@ -2,34 +2,35 @@
   <h1 style= "color: black;"> Properties </h1>
   <div class="row mx-0">
     <% @properties.each do |property| %>
-    <div class="col-md-3 my-2">
-    <div class="card">
-      <div class="card-body">
-        <h5 style="color :black;" class="card-title"><%= property.title%></h5>
-        <h6 style="color :black;"> <p class="card-text">
-          <%= property.property_size %> <br>
-          <%= property.price %><br>
-          <%= property.is_deposit_required %>
-        </p>
-      </h6>
-    </div>
-      <% if current_user.role == 'Broker' %>
-      <%= link_to 'Show Detail', property %>
-      <%= link_to 'Edit Property', edit_property_path(property) %>
-      <%= link_to 'Destroy Property', property, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% else %>
-      <%= link_to 'Show Detail', property %>
-      <% end %>
-    </div>
+      <div class="col-md-3 my-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 style="color :black;" class="card-title"><%= property.title%></h5>
+            <h6 style="color :black;"> <p class="card-text">
+              <p>Property Size : <%= property.property_size %></p> <br>
+              <p> Property Price : <%= property.price %> </p><br>
+              <p> Is deposit required? : <%= property.is_deposit_required %></p>
+              </p>
+            </h6>
+          </div>
+          <% if current_user.role == 'Broker' %>
+            <%= link_to 'Show Detail', property %>
+            <%= link_to 'Edit Property', edit_property_path(property) %>
+            <%= link_to 'Destroy Property', property, method: :delete, data: { confirm:          'Are you sure?' } %>
+          <% else %>
+            <%= link_to 'Show Detail', property %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <% end %>
   <br>
   <% if current_user.role == 'Broker' %>
   <%= link_to 'New Property', new_property_path %>
   <% else %>
   <%= link_to 'Back' ,clients_path %>
   <% end %>
-
-  <% if current_user.role == 'Broker' %>
+<br>
+<% if current_user.role == 'Broker' %>
   <%= link_to 'Back' ,brokers_path %>
-  <% end %>
+<% end %>

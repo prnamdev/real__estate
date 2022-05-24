@@ -8,5 +8,6 @@ class CreateInterests < ActiveRecord::Migration[6.0]
     end
     add_index :interests, :property_id
     add_index :interests, :user_id
+    add_index :interests, [:property_id, :user_id], unique: true
   end
 end

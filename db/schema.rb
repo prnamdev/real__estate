@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_18_085027) do
+ActiveRecord::Schema.define(version: 2022_05_19_062645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "brokers", force: :cascade do |t|
+  create_table "interests", force: :cascade do |t|
+    t.string "property_id"
+    t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "clients", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id", "user_id"], name: "index_interests_on_property_id_and_user_id", unique: true
+    t.index ["property_id"], name: "index_interests_on_property_id"
+    t.index ["user_id"], name: "index_interests_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|
