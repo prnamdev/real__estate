@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :properties
   resources :brokers
   resources :clients
   resources :properties do
