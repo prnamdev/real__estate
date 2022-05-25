@@ -1,12 +1,19 @@
 {
-    "name": "Real__Estate",
-  "private": "true",
+  "name": "Real__Estate",
+  "private": true,
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1",
-    ...
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "^5.0.0",
+    "bootstrap": "3.4.1",
+    "i": "^0.3.7",
+    "jquery": "^3.6.0",
+    "node-sass": "^7.0.1",
+    "turbolinks": "^5.2.0"
   },
-  "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^4.8.1"
   }
 }
