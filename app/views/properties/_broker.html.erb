@@ -1,9 +1,8 @@
 <% if current_user.role == 'Broker' %>
   <h1 style= "color: black;"> Broker </h1>
-  <%= link_to "Profile",new_broker_path, class:"btn btn-primary"%> | 
-  <%= link_to "Create New Property", new_property_path, class: "btn btn-primary" %> |
-  <%= link_to "My Property", properties_path(my_property: true), class: "btn btn-primary" %>
-
+  <%= link_to "Profile",broker_path, class:"btn btn-primary"%> | 
+  <%= link_to "Create New Property", new_property_path, class: "btn btn-primary" %> 
+  
 <div class="row"> 
   <% if @properties.present? %>
     <% @properties.each do |p|%>
@@ -13,9 +12,9 @@
             <h5 style="color :black;" class="card-title"><%= p.title%></h5>
             <h6 style="color :black;">
               <p class="card-text">
-              <p>Property Size : <%= p.property_size %></p> <br>
-              <p> Property Price : <%= p.price %> </p><br>
-              <p> Is deposit required? : <%= p.is_deposit_required %></p>
+                <p>Property Size : <%= p.property_size %></p> <br>
+                <p> Property Price : <%= p.price %> </p><br>
+                <p> Is deposit required? : <%= p.is_deposit_required %></p>
               </p>
             </h6>
           </div>

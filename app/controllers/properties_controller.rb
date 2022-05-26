@@ -1,5 +1,4 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_property, only: %i[ show edit update destroy ]
 
@@ -13,7 +12,6 @@ class PropertiesController < ApplicationController
   end
   # GET /properties/1 or /properties/1.json
   def show
-    @interests = @property.interests
   end
 
   # GET /properties/new
@@ -23,6 +21,11 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1/edit
   def edit
+  end
+  def broker
+  end
+  def client
+    #byebug
   end
 
   # POST /properties or /properties.json

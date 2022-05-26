@@ -4,7 +4,7 @@ class InterestsController < ApplicationController
 
   def create
     #byebug
-    @interest = @property.interests.create(user_id: current_user.id)
+    @property.interests.create(user_id: current_user.id)
     UserMailer.with(user: current_user, property: @property).post_created.deliver_now
     redirect_to property_path(@property)
   end

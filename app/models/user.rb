@@ -7,7 +7,7 @@ class User < ApplicationRecord
   enum role: { Broker: 0, Client: 1}
 
   has_many :properties, dependent: :destroy
-  has_many :interests, dependent: :destroy
+  has_many :interests,  dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -33,9 +33,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.Broker?
       can :manage, Property, user: user
-      # can :read, Post, user: user
     else
       can :read, Property
+      alias_action :client, :to => :read
     end
   end
 end

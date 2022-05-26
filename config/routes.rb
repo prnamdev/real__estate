@@ -5,12 +5,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :brokers
-  resources :clients
   resources :properties do
     resources :interests, only: [:create, :destroy]
   end
 
+  get 'broker',  to: 'properties#broker'
+  get 'client',  to: 'properties#client'
   get 'interests/interest/:property_id', to: "interests#interest", as: :interests_interest
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -26,7 +26,7 @@
   <%= @property.is_deposit_required %>
 </p>
 <% if current_user.Client? %>
-  <%= link_to 'Back' , clients_path %><br>
+  <%= link_to 'Back' , properties_path %><br>
   <% interest = Interest.find_by(property: @property, user: current_user) %>
   <% if interest.present? %>
       <%= button_to 'Cancel', property_interest_path(property_id: @property.id,id: interest.id), :method => :delete %>
@@ -35,8 +35,9 @@
   <% end %>
 <% else %>
   <%= link_to "Show Interested User", interests_interest_path(@property), class: "btn btn-primary" %>
-  <%= link_to 'Back' , brokers_path %>
-  <%= link_to 'Edit' , edit_property_path(@property) %>
+  <%= link_to 'Back' , properties_path, class: "btn btn-primary"  %>
+  <%= link_to 'Edit' , edit_property_path(@property), class: "btn btn-primary"  %>
+  <%= link_to 'Destroy', property_path(@property), method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-primary" %>
 <% end %>
 
 </div>

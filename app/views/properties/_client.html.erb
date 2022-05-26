@@ -2,7 +2,7 @@
 <div class= "contanier my-3">
   <p id="notice"><%#= notice %></p>
   <h1 style="color:black;">Client</h1>
-  <%= link_to "Profile",new_client_path, class:"btn btn-primary"%> 
+  <%= link_to "Profile",client_path, class:"btn btn-primary"%> 
   <div class="row mx-0">
     <% if @properties.present? %>
       <% @properties.each do |p|%>
