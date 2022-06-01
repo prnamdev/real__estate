@@ -1,8 +1,27 @@
-<% if current_user.role == 'Broker' %>
-  <%= render 'broker' %>
-<% else %>
-  <%= render 'client' %>
-<% end %>
+<div class= "contanier my-3">
+  <% if current_user.broker? %>
+    <%= link_to "Create New Property", new_property_path, class: "btn btn-primary" %> 
+  <% end %>
 
+  <hr>
 
-
+  <div class="row mx-0">
+    <% @properties.each do |p|%>
+      <div class="col-md-3 my-2">
+      <div class="card">
+      <div class="card-body">
+        <h5 style="color :black;" class="card-title"><%= p.title%></h5>
+        <h6 style="color :black;"> <p class="card-text">
+          <p> Property Size : <%= p.property_size %> </p><br>
+          <p> Price : <%= p.price %></p><br>
+          <p> Is deposit required? : <%= p.is_deposit_required %></p>
+          <p> Created by: <%= p.user.name.capitalize %> </p>
+          <%= link_to "View", property_path(p), class:"btn btn-primary"%>
+          </p>
+        </h6>
+      </div>
+      </div>
+      </div>
+    <% end %>
+  </div>
+</div>

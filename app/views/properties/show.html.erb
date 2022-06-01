@@ -25,19 +25,19 @@
   <strong>Is deposit required:</strong>
   <%= @property.is_deposit_required %>
 </p>
-<% if current_user.Client? %>
-  <%= link_to 'Back' , properties_path %><br>
-  <% interest = Interest.find_by(property: @property, user: current_user) %>
-  <% if interest.present? %>
-      <%= button_to 'Cancel', property_interest_path(property_id: @property.id,id: interest.id), :method => :delete %>
-  <% else %>
-    <%= button_to 'Interest', property_interests_path(@property), method: :property %>
-  <% end %>
-<% else %>
-  <%= link_to "Show Interested User", interests_interest_path(@property), class: "btn btn-primary" %>
-  <%= link_to 'Back' , properties_path, class: "btn btn-primary"  %>
+
+<%= link_to 'Back', properties_path, class: "btn btn-primary"  %>
+
+<% if current_user.broker? %>
+  <%= link_to "Show Interested User", property_interests_path(@property), class: "btn btn-primary" %>
   <%= link_to 'Edit' , edit_property_path(@property), class: "btn btn-primary"  %>
   <%= link_to 'Destroy', property_path(@property), method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-primary" %>
+<% else %>
+  <% if @property.interest_shown_by?(current_user) %>
+    <%= button_to 'Cancel', property_interest_path(property_id: @property.id, id: @property.user_intreset(current_user).id), method: :delete %>
+  <% else %>
+    <%= button_to 'Interest', property_interests_path(@property), method: :post %>
+  <% end %>
 <% end %>
 
 </div>
